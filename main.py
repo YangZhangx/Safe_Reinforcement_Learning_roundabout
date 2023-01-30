@@ -15,6 +15,9 @@ from rcbf_sac.utils import prGreen, get_output_folder, prYellow
 from rcbf_sac.evaluator import Evaluator
 from rcbf_sac.generate_rollouts import generate_model_rollouts
 
+import gym
+import highway_env
+
 
 def train(agent, env, dynamics_model, args, experiment=None):
 
@@ -298,7 +301,7 @@ if __name__ == "__main__":
         raise Exception('Compensator can only be used with model free RL and regular CBF.')
 
     # Environment
-    env = build_env(args)
+    env = gym.make('roundabout-v0')
 
     # Agent
     agent = RCBF_SAC(env.observation_space.shape[0], env.action_space, env, args)
