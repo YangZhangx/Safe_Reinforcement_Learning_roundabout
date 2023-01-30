@@ -302,7 +302,9 @@ if __name__ == "__main__":
 
     # Environment
     env = gym.make('roundabout-v0')
-
+    #env = build_env(args)
+    #env.seed(args.seed)
+    
     # Agent
     agent = RCBF_SAC(env.observation_space.shape[0], env.action_space, env, args)
     dynamics_model = DynamicsModel(env, args)
